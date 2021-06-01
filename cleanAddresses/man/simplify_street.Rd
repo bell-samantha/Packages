@@ -4,17 +4,19 @@
 \alias{simplify_street}
 \title{A cleanAddresses Function}
 \usage{
-simplify_street(street)
+simplify_street(street, numWords)
 }
 \arguments{
 \item{street}{takes in the vector of character street names (usually a column from a dataset)}
+
+\item{numWords}{the number of full words the user would like to allow to follow the street number and direction.}
 }
 \description{
 This function takes in a character vector of character address text. The entry data MUST start with street numbers but has the option to include or exclude City, State, and Zip fields
 The result is a vector of the same length as the input data, made up of simplified street addresses only. Any City, State, or Zip will be cut off. The result can be applied directly as a new column in a dataset
 }
 \examples{
-myData$newField <- simplify_street(myData$rawStreetField)
+myData$newField <- simplify_street(street = myData$rawStreetField, numWords = 2)
 }
 \keyword{address}
 \keyword{street,}
