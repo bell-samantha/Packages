@@ -1,0 +1,60 @@
+You can follow this tutorial on making your own package in R:
+https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
+
+
+*Install and load the two packages needed to get started
+```{r}
+install.packages("devtools")
+library(devtools)
+devtools::install_github("klutometis/roxygen")
+library(roxygen2)
+install.packages("svDialogs")
+library(svDialogs)
+```
+
+*Create package directory where you will save your package
+```{r}
+mydir <- dlg_input("Provide the directory path where you would like to create a new package:")$res
+setwd(mydir)
+
+packageName <- dlg_input("Provide the name you would like to give your new package")$res
+create(packageName)
+```
+
+*Edit the description file that now appears in your directory, inside the folder with your package name.
+  You should include your contact information, a title, description of the purpose, etc. 
+
+*Save your function to an R file in the same folder, and include a header with commented out information
+Ex:
+#' Function Title
+#'
+#' This function allows you to ...
+#' @param paramName [short description of the param]
+#' @keywords [keywords related to your function]
+#' @export
+#' @examples
+#' function_name()
+
+*Process your documentation
+```{r}
+setwd(paste0(mydir, "/", packageName))
+document()
+```
+
+*Install your new package and test 
+```{r}
+install(packageName) # install
+library(paste(packageName), character.only = TRUE) # load the library
+
+?... # insert the name of a function and view help file
+```
+
+
+*Put your package on github, and then test installation from there:
+  ex: the repository path is username/folder/subfolder
+```{r}
+repo <- dlg_input("Provide the github repository path where your package is stored:")$res
+install_github(repo)
+```
+
+ 
