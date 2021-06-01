@@ -8,8 +8,7 @@
 #' @param street takes in the vector of character street names (usually a column from a dataset)
 #' @keywords street, address
 #' @export
-#' @examples
-#' simplify_street()
+#' @examples myData$newField <- simplify_street(myData$rawStreetField)
 
 simplify_street <- function(street){
   # Make a column with just the beginning of street addresses (for easier grouping)
