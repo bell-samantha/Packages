@@ -1,19 +1,17 @@
 #' A cleanAddresses Function
 #' 
-#' This function takes in a character vector of character address text
-#'    The entry data MUST start with street numbers but has the option to include or exclude City, State, and Zip fields
-#' The result is a vector of the same length as the input data, made up of simplified street addresses only. Any City, State, or Zip will be cut off. 
-#'    The result can be applied directly as a new column in a dataset by running it as:
-#'       myData$newField <- simplify_street(myData$rawStreetField)
+#' This function takes in a character vector of character address text. The entry data MUST start with street numbers but has the option to include or exclude City, State, and Zip fields
+#' The result is a vector of the same length as the input data, made up of simplified street addresses only. Any City, State, or Zip will be cut off. The result can be applied directly as a new column in a dataset 
 #' @param street takes in the vector of character street names (usually a column from a dataset)
+#' @param numWords the number of full words the user would like to allow to follow the street number and direction.
 #' @keywords street, address
 #' @export
-#' @examples myData$newField <- simplify_street(myData$rawStreetField)
+#' @examples myData$newField <- simplify_street(street = myData$rawStreetField, numWords = 2)
 
-simplify_street <- function(street){
+simplify_street <- function(street, numWords){
   # Make a column with just the beginning of street addresses (for easier grouping)
-  pat1 <- "^\\d+\\s+[NSEW].{0,5}\\s*\\w+"  #match for a one letter N,S,E,W before the name
-  pat2 <- "^(\\d+\\s+){1,2}(\\w+){1,2}" #match for 1-2 full words directly after the number (allow for 2 numbers if one is the road name) - only use if not expecting a directional letter
+  pat1 <- paste0("^\\d+\\s+[NSEW].{0,5}\\s*(\\w+){1,", as.character(numWords),"}")  #match for a one letter N,S,E,W before the name
+  pat2 <- paste0("^(\\d+\\s+){1,2}(\\w+){1,", as.character(numWords),"}") #match for 1-2 full words directly after the number (allow for 2 numbers if one is the road name) - only use if not expecting a directional letter
   Address_Simple <- ""  # initiate empty column
   for(i in 1:length(street)){
     if(!is.na(street[i])){
