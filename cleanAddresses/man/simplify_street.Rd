@@ -15,7 +15,6 @@ The result is a vector of the same length as the input data, made up of simplifi
 }
 \examples{
 myData$newField <- simplify_street(myData$rawStreetField)
-simplify_street()
 }
 \keyword{address}
 \keyword{street,}
