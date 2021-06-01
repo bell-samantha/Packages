@@ -8,6 +8,7 @@ Authors@R:
            email = "sam.bell.lvt@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Designed to help unify and simplify the format of messy address fields. This includes cleaning up of "north"/"south"/"east"/"west" and extraneaous information. The simplified results can then be used to group addresses. 
+URL: https://github.com/bell-samantha/Packages/tree/main/cleanAddresses 
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
