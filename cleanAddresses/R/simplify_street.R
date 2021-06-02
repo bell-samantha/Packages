@@ -10,8 +10,8 @@
 
 simplify_street <- function(street, numWords){
   # Make a column with just the beginning of street addresses (for easier grouping)
-  pat1 <- paste0("^\\d+\\s+[NSEW].{0,5}\\s*(\\w+){1,", as.character(numWords),"}")  #match for a one letter N,S,E,W before the name
-  pat2 <- paste0("^(\\d+\\s+){1,2}(\\w+){1,", as.character(numWords),"}") #match for 1-2 full words directly after the number (allow for 2 numbers if one is the road name) - only use if not expecting a directional letter
+  pat1 <- paste0("^\\d+\\s+[NSEW].{0,5}\\s*(\\w+\\s?){1,", as.character(numWords),"}")  #match for a one letter N,S,E,W before the name
+  pat2 <- paste0("^(\\d+\\s+){1,2}(\\w+\\s?){1,", as.character(numWords),"}") #match for words directly after the number - only use if not expecting a directional letter
   Address_Simple <- ""  # initiate empty column
   for(i in 1:length(street)){
     if(!is.na(street[i])){
