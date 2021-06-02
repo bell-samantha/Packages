@@ -13,7 +13,6 @@
 
 add_coord <- function(street, city, state, zip, identifier){
   addressTibble <- dplyr::as_tibble(cbind(street, city, state, zip, identifier))
-  addressTibble
   # Remove addresses with NA values (NAs make geocoder very slow and less accurate)
   addressTibble <- addressTibble[!is.na(addressTibble[1]),]
   addressTibble <- addressTibble[!is.na(addressTibble[2]),]
