@@ -25,7 +25,7 @@ simplify_street <- function(street, numWords){
         str_match(street[i], regex(pat2, ignore_case = TRUE))) #else take a full word after the number using pattern 2
     }else{"NA"} # If no address, NA simple address
   } 
-  Address_Simple <- gsub("apt|unit|apartment", "", Address_Simple) # remove extra words
+  Address_Simple <- gsub("apt|unit|apartment", "", Address_Simple, ignore.case = TRUE) # remove extra words
   return(Address_Simple)
 }
 
