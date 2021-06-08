@@ -2,7 +2,7 @@ You can follow this tutorial on making your own package in R:
 https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/
 
 
-*Install and load the two packages needed to get started
+*Install and load the packages needed to get started
 ```{r}
 install.packages("devtools")
 library(devtools)
@@ -10,6 +10,7 @@ devtools::install_github("klutometis/roxygen")
 library(roxygen2)
 install.packages("svDialogs")
 library(svDialogs)
+install.
 ```
 
 *Create package directory where you will save your package
@@ -24,7 +25,7 @@ create(packageName)
 *Edit the description file that now appears in your directory, inside the folder with your package name.
   You should include your contact information, a title, description of the purpose, etc. 
 
-*Save your function to an R file in the same folder, and include a header with commented out information
+*Save your function to an R file within the "R" folder of your new package folder, and include a header with commented out information
 Ex:
 #' Function Title
 #'
@@ -54,7 +55,7 @@ library(paste(packageName), character.only = TRUE) # load the library
   ex: the repository path is username/folder/subfolder
 ```{r}
 repo <- dlg_input("Provide the github repository path where your package is stored:")$res
-install_github(repo)
+remotes::install_github(repo)
 ```
 
  
