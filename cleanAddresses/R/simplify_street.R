@@ -18,10 +18,10 @@ simplify_street <- function(street, numWords){
       Address_Simple[i] <- ifelse(
         !is.na(str_match(street[i], regex(pat1, ignore_case = TRUE))[1]), #Check for N,S,E,W type letter match
         (str_match(street[i], regex(pat1, ignore_case = TRUE))[1] %>% #if N,S,E,W letter was found, match pattern 1 and substitute NSEW to standard format
-           gsub("\\sN\\s|\\sN\\.\\s|\\sNorth\\s", "North ", x = ., ignore.case = TRUE) %>%
-           gsub("\\sS\\s|\\sS\\.\\s|\\sSouth\\s", "South ", x = ., ignore.case = TRUE) %>%
-           gsub("\\sE\\s|\\sE\\.\\s|\\sEast\\s", "East ", x = ., ignore.case = TRUE) %>%
-           gsub("\\sW\\s|\\sW\\.\\s|\\sWest\\s", "West ", x = ., ignore.case = TRUE)), 
+           gsub("\\sN\\s|\\sN\\.\\s|\\sNorth\\s", " North ", x = ., ignore.case = TRUE) %>%
+           gsub("\\sS\\s|\\sS\\.\\s|\\sSouth\\s", " South ", x = ., ignore.case = TRUE) %>%
+           gsub("\\sE\\s|\\sE\\.\\s|\\sEast\\s", " East ", x = ., ignore.case = TRUE) %>%
+           gsub("\\sW\\s|\\sW\\.\\s|\\sWest\\s", " West ", x = ., ignore.case = TRUE)), 
         str_match(street[i], regex(pat2, ignore_case = TRUE))) #else take a full word after the number using pattern 2
     }else{"NA"} # If no address, NA simple address
   } 
