@@ -16,8 +16,8 @@ clean_numbers <- function(phones){
   for(i in 1:length(phones)){
     
     # Find unique numbers within the phone number
-    findNum <- gregexpr("[0-9]", phone)
-    splitNum <- as.numeric(unique(unlist(regmatches(phone, t))))
+    findNum <- gregexpr("[0-9]", phones)
+    splitNum <- as.numeric(unique(unlist(regmatches(phones, t))))
     lenUnique <-length(splitNum)
     
     # Judge whether a number passes or fails
