@@ -16,8 +16,8 @@ clean_numbers <- function(phones){
   for(i in 1:length(phones)){
     
     # Find unique numbers within the phone number
-    findNum <- gregexpr("[0-9]", phones)
-    splitNum <- as.numeric(unique(unlist(regmatches(phones, t))))
+    findNum <- gregexpr("[0-9]", phones[i])
+    splitNum <- as.numeric(unique(unlist(regmatches(phones[i], findNum))))
     lenUnique <-length(splitNum)
     
     # Judge whether a number passes or fails
@@ -30,12 +30,15 @@ clean_numbers <- function(phones){
       (lenUnique > 3) & # Has more than 3 unique digits (not repeating numbers)
       !grepl("(123456789)", phones[i]) # not just numbers in order (fake number)
     ){
-      pass[i] <- phones # If passed, save the cleaned number
+      pass[i] <- phones[i] # If passed, save the cleaned number
     }else(pass[i] <- "NA") # If failed, save as NA
   }
   # clip leading country codes if present (save 10 digits)
-  pass <- substr(pass, nchar(pass)-9, 10)
+  pass <- substr(pass, nchar(pass)-9, nchar(pass))
   
   # Return the cleaned numbers
   return(pass)
 }
+
+example_phone_numbers$clean_phone <- clean_numbers(example_phone_numbers$dirty_phone)
+
