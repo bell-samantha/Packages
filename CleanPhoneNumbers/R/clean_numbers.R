@@ -30,7 +30,7 @@ clean_numbers <- function(phones){
       (lenUnique > 3) & # Has more than 3 unique digits (not repeating numbers)
       !grepl("(123456789)", phones[i]) # not just numbers in order (fake number)
     ){
-      pass[i] <- phone # If passed, save the cleaned number
+      pass[i] <- phones # If passed, save the cleaned number
     }else(pass[i] <- "NA") # If failed, save as NA
   }
   # clip leading country codes if present (save 10 digits)
