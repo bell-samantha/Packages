@@ -2,7 +2,7 @@ Package: CleanPhoneNumbers
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("Samantha", "Bell", , "sam.bell.lvt@gmail.com, role = c("aut", "cre"),
+    person("Samantha", "Bell", , "sam.bell.lvt@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: This package takes in dirty and misformatted phone numbers as a vector, and provides a cleaned vector of the same size with standardized phone numbers for grouping or using as a contact list.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
